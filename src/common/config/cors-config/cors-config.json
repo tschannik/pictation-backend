@@ -1,0 +1,10 @@
+{
+  "development": [
+    "https://sofia.dev-scapp.swisscom.com",
+    "http://localhost:3000"
+  ],
+  "production": [
+    "https://sofia.swisscom.com",
+    "https://sofia.scapp.swisscom.com"
+  ]
+}
