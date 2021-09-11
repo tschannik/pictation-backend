@@ -2,7 +2,7 @@ import * as Joi from 'joi';
 import * as dotenv from 'dotenv';
 import { DatabaseType } from 'typeorm';
 import { LoggerOptions } from 'typeorm/logger/LoggerOptions';
-import {default as corsConfig} from './cors-config/cors-config.json';
+import * as corsConfig from './cors-config/cors-config.json';
 
 export interface EnvConfig {
   [key: string]: string;

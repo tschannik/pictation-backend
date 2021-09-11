@@ -4,6 +4,6 @@ import { CollectionsController } from './collections.controller';
 
 @Module({
   controllers: [CollectionsController],
-  providers: [CollectionsService]
+  providers: [CollectionsService],
 })
 export class CollectionsModule {}
