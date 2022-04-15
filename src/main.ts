@@ -1,20 +1,26 @@
+import { LoggerService } from './common/logger/logger.service';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger } from 'nestjs-pino';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigModule } from './common/config/config.module';
 import { ConfigService } from './common/config/config.service';
 import { getCorsSettings } from './common/util/cors.settings';
 import { ValidationPipe } from '@nestjs/common';
 import * as compression from 'compression';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import * as csurf from 'csurf';
 
 declare const module: any;
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useLogger(app.get(Logger));
+async function bootstrap(): Promise<void> {
+  const app = await NestFactory.create(
+    AppModule,
+    process.env.LOG_PRETTY_PRINT
+      ? {}
+      : {
+          logger: new LoggerService(),
+        },
+  );
 
   const configService = app.select(ConfigModule).get(ConfigService, { strict: true });
   app.enableCors(getCorsSettings(configService.corsAllowedOrigins));
@@ -55,4 +61,5 @@ async function bootstrap() {
     module.hot.dispose(() => app.close());
   }
 }
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 bootstrap();
