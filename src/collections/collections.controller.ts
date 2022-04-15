@@ -15,17 +15,17 @@ export class CollectionsController {
   }
 
   @Get()
-  findAll() {
+  findAll(): string {
     return this.collectionsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): string {
     return this.collectionsService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCollectionDto: UpdateCollectionDto) {
+  update(@Param('id') id: string, @Body() updateCollectionDto: UpdateCollectionDto): string {
     return this.collectionsService.update(+id, updateCollectionDto);
   }
 
