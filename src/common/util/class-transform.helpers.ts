@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 
-export const unflattenObject = <T>(obj: object, separator: string = '_'): T => {
+export const unflattenObject = <T>(obj: object, separator = '_'): T => {
   return Object.entries(obj).reduce((acc, [key, value]) => {
     const nestedProperties = key.split(separator);
     const actualValueProperty = nestedProperties.pop();
