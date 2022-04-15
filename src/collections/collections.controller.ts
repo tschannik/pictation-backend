@@ -30,7 +30,7 @@ export class CollectionsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: string): string {
     return this.collectionsService.remove(+id);
   }
 }
